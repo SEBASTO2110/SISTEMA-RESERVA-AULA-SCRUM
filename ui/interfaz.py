@@ -21,35 +21,35 @@ class VentanaMain:
     
     def crear_interfaz(self):
         """Crea el menú principal con todos los botones"""
-    # Título
-    titulo = tk.Label(
+        # Título
+        titulo = tk.Label(
         self.root,
         text="📋 SISTEMA DE RESERVAS",
         font=("Arial", 20, "bold"),
         bg=self.bg_color,
         fg="#2c3e50"
-    )
-    titulo.pack(pady=15)
+        )
+        titulo.pack(pady=15)
     
-    # Subtítulo
-    subtitulo = tk.Label(
+        # Subtítulo
+        subtitulo = tk.Label(
         self.root,
         text="de Salas y Aulas",
         font=("Arial", 12),
         bg=self.bg_color,
         fg="#7f8c8d"
-    )
-    subtitulo.pack(pady=5)
+        )
+        subtitulo.pack(pady=5)
     
-    # Separador
-    separador = tk.Frame(self.root, height=2, bg="#bdc3c7")
-    separador.pack(fill=tk.X, pady=15)
-    # Frame de botones
-    frame_botones = tk.Frame(self.root, bg=self.bg_color)
-    frame_botones.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
-    
-    # BOTÓN 1: Registrar
-    btn_registrar = tk.Button(
+        # Separador
+        separador = tk.Frame(self.root, height=2, bg="#bdc3c7")
+        separador.pack(fill=tk.X, pady=15)
+        # Frame de botones
+        frame_botones = tk.Frame(self.root, bg=self.bg_color)
+        frame_botones.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
+        
+        # BOTÓN 1: Registrar
+        btn_registrar = tk.Button(
         frame_botones,
         text="➕ Registrar Nueva Reserva",
         font=("Arial", 11, "bold"),
@@ -58,11 +58,11 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.registrar_reserva
-    )
-    btn_registrar.pack(fill=tk.X, pady=8)
+        )
+        btn_registrar.pack(fill=tk.X, pady=8)
     
-    # BOTÓN 2: Consultar
-    btn_consultar = tk.Button(
+        # BOTÓN 2: Consultar
+        btn_consultar = tk.Button(
         frame_botones,
         text="🔍 Consultar Reservas por Fecha",
         font=("Arial", 11, "bold"),
@@ -71,11 +71,11 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.consultar_reservas
-    )
-    btn_consultar.pack(fill=tk.X, pady=8)
+        )
+        btn_consultar.pack(fill=tk.X, pady=8)
     
-    # BOTÓN 3: Ver detalles
-    btn_detalles = tk.Button(
+        # BOTÓN 3: Ver detalles
+        btn_detalles = tk.Button(
         frame_botones,
         text="📄 Ver Detalles de Reserva",
         font=("Arial", 11, "bold"),
@@ -84,11 +84,11 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.ver_detalles
-    )
-    btn_detalles.pack(fill=tk.X, pady=8)
+        )
+        btn_detalles.pack(fill=tk.X, pady=8)
 
-    # BOTÓN 4: Modificar
-    btn_modificar = tk.Button(
+        # BOTÓN 4: Modificar
+        btn_modificar = tk.Button(
         frame_botones,
         text="✏️ Modificar Reserva",
         font=("Arial", 11, "bold"),
@@ -97,11 +97,11 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.modificar_reserva
-    )
-    btn_modificar.pack(fill=tk.X, pady=8)
+        )
+        btn_modificar.pack(fill=tk.X, pady=8)
     
-    # BOTÓN 5: Cancelar
-    btn_cancelar = tk.Button(
+        # BOTÓN 5: Cancelar
+        btn_cancelar = tk.Button(
         frame_botones,
         text="❌ Cancelar Reserva",
         font=("Arial", 11, "bold"),
@@ -110,11 +110,11 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.cancelar_reserva
-    )
-    btn_cancelar.pack(fill=tk.X, pady=8)
+        )
+        btn_cancelar.pack(fill=tk.X, pady=8)
     
-    # BOTÓN 6: Gestionar salas
-    btn_salas = tk.Button(
+        # BOTÓN 6: Gestionar salas
+        btn_salas = tk.Button(
         frame_botones,
         text="🏢 Gestionar Salas",
         font=("Arial", 11, "bold"),
@@ -123,15 +123,15 @@ class VentanaMain:
         height=2,
         cursor="hand2",
         command=self.gestionar_salas
-    )
-    btn_salas.pack(fill=tk.X, pady=8)
+        )
+        btn_salas.pack(fill=tk.X, pady=8)
 
-    # Frame inferior para botón Salir
-    frame_inferior = tk.Frame(self.root, bg=self.bg_color)
-    frame_inferior.pack(side=tk.BOTTOM, fill=tk.X, padx=20, pady=15)
-    
-    # BOTÓN Salir
-    btn_salir = tk.Button(
+        # Frame inferior para botón Salir
+        frame_inferior = tk.Frame(self.root, bg=self.bg_color)
+        frame_inferior.pack(side=tk.BOTTOM, fill=tk.X, padx=20, pady=15)
+        
+        # BOTÓN Salir
+        btn_salir = tk.Button(
         frame_inferior,
         text="🚪 Salir",
         font=("Arial", 11, "bold"),
@@ -139,10 +139,9 @@ class VentanaMain:
         fg="white",
         height=2,
         cursor="hand2",
-        command=self.salir
-    )
-    btn_salir.pack(fill=tk.X)
-    
+        command=self.salir,
+        )
+        btn_salir.pack(fill=tk.X)
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
         messagebox.showinfo("En construcción", "Pantalla de Registro\n\nJunior está trabajando en esto")
