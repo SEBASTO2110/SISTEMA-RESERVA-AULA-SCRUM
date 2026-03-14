@@ -86,6 +86,45 @@ class VentanaMain:
         command=self.ver_detalles
     )
     btn_detalles.pack(fill=tk.X, pady=8)
+
+     # BOTÓN 4: Modificar
+    btn_modificar = tk.Button(
+        frame_botones,
+        text="✏️ Modificar Reserva",
+        font=("Arial", 11, "bold"),
+        bg="#f39c12",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.modificar_reserva
+    )
+    btn_modificar.pack(fill=tk.X, pady=8)
+    
+    # BOTÓN 5: Cancelar
+    btn_cancelar = tk.Button(
+        frame_botones,
+        text="❌ Cancelar Reserva",
+        font=("Arial", 11, "bold"),
+        bg="#e74c3c",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.cancelar_reserva
+    )
+    btn_cancelar.pack(fill=tk.X, pady=8)
+    
+    # BOTÓN 6: Gestionar salas
+    btn_salas = tk.Button(
+        frame_botones,
+        text="🏢 Gestionar Salas",
+        font=("Arial", 11, "bold"),
+        bg="#1abc9c",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.gestionar_salas
+    )
+    btn_salas.pack(fill=tk.X, pady=8)
     
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
