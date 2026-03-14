@@ -21,8 +21,29 @@ class VentanaMain:
     
     def crear_interfaz(self):
         """Crea el menú principal con todos los botones"""
-        # Por ahora solo estructura
-        pass
+    # Título
+    titulo = tk.Label(
+        self.root,
+        text="📋 SISTEMA DE RESERVAS",
+        font=("Arial", 20, "bold"),
+        bg=self.bg_color,
+        fg="#2c3e50"
+    )
+    titulo.pack(pady=15)
+    
+    # Subtítulo
+    subtitulo = tk.Label(
+        self.root,
+        text="de Salas y Aulas",
+        font=("Arial", 12),
+        bg=self.bg_color,
+        fg="#7f8c8d"
+    )
+    subtitulo.pack(pady=5)
+    
+    # Separador
+    separador = tk.Frame(self.root, height=2, bg="#bdc3c7")
+    separador.pack(fill=tk.X, pady=15)
     
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
