@@ -87,7 +87,7 @@ class VentanaMain:
     )
     btn_detalles.pack(fill=tk.X, pady=8)
 
-     # BOTÓN 4: Modificar
+    # BOTÓN 4: Modificar
     btn_modificar = tk.Button(
         frame_botones,
         text="✏️ Modificar Reserva",
@@ -125,6 +125,23 @@ class VentanaMain:
         command=self.gestionar_salas
     )
     btn_salas.pack(fill=tk.X, pady=8)
+
+    # Frame inferior para botón Salir
+    frame_inferior = tk.Frame(self.root, bg=self.bg_color)
+    frame_inferior.pack(side=tk.BOTTOM, fill=tk.X, padx=20, pady=15)
+    
+    # BOTÓN Salir
+    btn_salir = tk.Button(
+        frame_inferior,
+        text="🚪 Salir",
+        font=("Arial", 11, "bold"),
+        bg="#34495e",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.salir
+    )
+    btn_salir.pack(fill=tk.X)
     
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
