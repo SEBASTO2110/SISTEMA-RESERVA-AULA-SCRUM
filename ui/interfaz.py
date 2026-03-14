@@ -44,6 +44,48 @@ class VentanaMain:
     # Separador
     separador = tk.Frame(self.root, height=2, bg="#bdc3c7")
     separador.pack(fill=tk.X, pady=15)
+    # Frame de botones
+    frame_botones = tk.Frame(self.root, bg=self.bg_color)
+    frame_botones.pack(pady=10, padx=20, fill=tk.BOTH, expand=True)
+    
+    # BOTÓN 1: Registrar
+    btn_registrar = tk.Button(
+        frame_botones,
+        text="➕ Registrar Nueva Reserva",
+        font=("Arial", 11, "bold"),
+        bg="#27ae60",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.registrar_reserva
+    )
+    btn_registrar.pack(fill=tk.X, pady=8)
+    
+    # BOTÓN 2: Consultar
+    btn_consultar = tk.Button(
+        frame_botones,
+        text="🔍 Consultar Reservas por Fecha",
+        font=("Arial", 11, "bold"),
+        bg="#3498db",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.consultar_reservas
+    )
+    btn_consultar.pack(fill=tk.X, pady=8)
+    
+    # BOTÓN 3: Ver detalles
+    btn_detalles = tk.Button(
+        frame_botones,
+        text="📄 Ver Detalles de Reserva",
+        font=("Arial", 11, "bold"),
+        bg="#9b59b6",
+        fg="white",
+        height=2,
+        cursor="hand2",
+        command=self.ver_detalles
+    )
+    btn_detalles.pack(fill=tk.X, pady=8)
     
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
