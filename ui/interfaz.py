@@ -145,27 +145,27 @@ class VentanaMain:
     
     def registrar_reserva(self):
         """Abre la pantalla de registro de reserva"""
-        messagebox.showinfo("En construcción", "Pantalla de Registro")
+        messagebox.showinfo("En construcción", "Pantalla de Registro\n\nJunior está trabajando en esto")
     
     def consultar_reservas(self):
         """Abre la pantalla de consulta por fecha"""
-        messagebox.showinfo("En construcción", "Pantalla de Consulta")
+        messagebox.showinfo("En construcción", "Pantalla de Consulta\n\nSantiago está trabajando en esto")
     
     def ver_detalles(self):
         """Abre la pantalla de detalles de una reserva"""
-        messagebox.showinfo("En construcción", "Ver Detalles")
+        messagebox.showinfo("En construcción", "Ver Detalles\n\nProximamente disponible")
     
     def modificar_reserva(self):
         """Abre la pantalla de modificación de reserva"""
-        messagebox.showinfo("En construcción", "Modificar Reserva")
+        messagebox.showinfo("En construcción", "Modificar Reserva\n\nProximamente disponible")
     
     def cancelar_reserva(self):
         """Abre la pantalla de cancelación de reserva"""
-        messagebox.showinfo("En construcción", "Cancelar Reserva")
+        messagebox.showinfo("En construcción", "Cancelar Reserva\n\nSantiago está trabajando en esto")
     
     def gestionar_salas(self):
         """Abre la pantalla de gestión de salas"""
-        messagebox.showinfo("Gestionar Salas", "Gestión de salas")
+        messagebox.showinfo("Gestionar Salas", "Salas disponibles:\n\n  Aula 101 (30 personas)\n• Aula 102 (40 personas)\n• Sala de Juntas (15 personas)")
     
     def salir(self):
         """Cierra la aplicación"""
