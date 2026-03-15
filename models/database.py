@@ -130,6 +130,7 @@ def validar_solapamiento(sala_id, fecha, hora_inicio, hora_fin):
     SELECT * FROM reservas
     WHERE sala_id = ?
     AND fecha = ?
+    AND estado = 'activa'
     AND hora_inicio < ?
     AND hora_fin > ?
     """
@@ -141,10 +142,113 @@ def validar_solapamiento(sala_id, fecha, hora_inicio, hora_fin):
 #False → la sala está libre
 
 
+def actualizar_reserva(id_reserva, sala_id, fecha, hora_inicio, hora_fin, responsable, descripcion):
+
+    db = ConexionBD()
+
+    sql = """
+    UPDATE reservas
+    SET sala_id = ?, fecha = ?, hora_inicio = ?, hora_fin = ?, responsable = ?, descripcion = ?
+    WHERE id = ?
+    """
+
+    db.ejecutar(sql, (sala_id, fecha, hora_inicio, hora_fin, responsable, descripcion, id_reserva))
+
+    return True
+
+def eliminar_reserva(id_reserva):
+
+    db = ConexionBD()
+
+    sql = """
+    UPDATE reservas
+    SET estado = 'cancelada'
+    WHERE id = ?
+    """
+
+    db.ejecutar(sql, (id_reserva,))
+
+    return True
+
+def obtener_reserva_por_id(id_reserva):
+
+    db = ConexionBD()
+
+    sql = """
+    SELECT * FROM reservas
+    WHERE id = ?
+    """
+
+    resultado = db.consultar(sql, (id_reserva,))
+
+    if resultado:
+        reserva = resultado[0]
+
+        return {
+            "id": reserva[0],
+            "sala_id": reserva[1],
+            "fecha": reserva[2],
+            "hora_inicio": reserva[3],
+            "hora_fin": reserva[4],
+            "responsable": reserva[5],
+            "descripcion": reserva[6],
+            "estado": reserva[7]
+        }
+
+    return None
+
+
+def insertar_sala(nombre, capacidad):
+
+    db = ConexionBD()
+
+    sql = """
+    INSERT INTO salas(nombre, capacidad)
+    VALUES (?, ?)
+    """
+
+    return db.ejecutar(sql, (nombre, capacidad))
+
+
+def insertar_sala(nombre, capacidad):
+
+    db = ConexionBD()
+
+    sql = """
+    INSERT INTO salas(nombre, capacidad)
+    VALUES (?, ?)
+    """
+
+    return db.ejecutar(sql, (nombre, capacidad))
+
 if __name__ == "__main__":
 
     crear_tablas()
     insertar_salas_prueba()
 
-    salas = obtener_salas()
-    print("Salas:", salas)
+    print("Salas:", obtener_salas())
+
+    reserva_id = insertar_reserva(
+        1,
+        "2026-03-20",
+        "09:00",
+        "11:00",
+        "Juan",
+        "Clase"
+    )
+
+    print("Reserva creada:", reserva_id)
+
+    print("Reserva:", obtener_reserva_por_id(reserva_id))
+
+    actualizar_reserva(
+        reserva_id,
+        1,
+        "2026-03-20",
+        "10:00",
+        "12:00",
+        "Juan",
+        "Clase actualizada"
+    )
+
+    print("Reserva actualizada:", obtener_reserva_por_id(reserva_id))
