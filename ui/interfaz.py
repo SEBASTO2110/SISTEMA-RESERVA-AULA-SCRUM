@@ -4,6 +4,7 @@ Menú con acceso a todas las funcionalidades
 """
 import tkinter as tk
 from tkinter import messagebox
+from models.database import ConexionBD
 
 class VentanaMain:
     def __init__(self, root):
@@ -15,6 +16,9 @@ class VentanaMain:
         # Colores
         self.bg_color = "#f0f0f0"
         self.root.configure(bg=self.bg_color)
+
+        # Conectar con BD
+        self.db = ConexionBD()
         
         # Crear interfaz
         self.crear_interfaz()
@@ -164,7 +168,15 @@ class VentanaMain:
     
     def gestionar_salas(self):
         """Abre la pantalla de gestión de salas"""
-        messagebox.showinfo("Gestionar Salas", "Salas disponibles:\n\n  Aula 101 (30 personas)\n• Aula 102 (40 personas)\n• Sala de Juntas (15 personas)")
+        # Obtener salas reales de BD
+        salas = self.db.obtener_salas()
+        
+        # Crear mensaje con salas
+        mensaje = "Salas disponibles:\n\n"
+        for sala in salas:
+            mensaje += f"• {sala['nombre']} ({sala   ['capacidad']} personas)\n"
+
+        messagebox.showinfo("Gestionar Salas", mensaje)
     
     def salir(self):
         """Cierra la aplicación"""
