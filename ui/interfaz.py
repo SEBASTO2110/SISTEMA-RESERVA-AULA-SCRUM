@@ -7,6 +7,7 @@ from tkinter import messagebox
 from models.database import BaseDatos
 from ui.pantalla_registro import PantallaRegistro
 from ui.pantalla_consulta import PantallaConsulta
+from ui.pantalla_cancelar import PantallaCancelar
 
 class VentanaMain:
     def __init__(self, root):
@@ -70,15 +71,19 @@ class VentanaMain:
     
     def ver_detalles(self):
         """Abre la pantalla de detalles de una reserva"""
-        messagebox.showinfo("En construcción", "Ver Detalles\n\nProximamente disponible")
+        from ui.pantalla_detalles import PantallaDetalles
+        ventana = tk.Toplevel(self.root)
+        app = PantallaDetalles(ventana, self.db)
     
     def modificar_reserva(self):
         """Abre la pantalla de modificación de reserva"""
-        messagebox.showinfo("En construcción", "Modificar Reserva\n\nProximamente disponible")
+        from ui.pantalla_modificar import PantallaModificar
+        ventana = tk.Toplevel(self.root)
+        app = PantallaModificar(ventana, self.db)
     
     def cancelar_reserva(self):
         """Abre la pantalla de cancelación de reserva"""
-        ventana = tk.Toplevel(self.root)
+        ventana = tk.Toplevel(self.root)    
         app = PantallaCancelar(ventana, self.db)
     
     def gestionar_salas(self):

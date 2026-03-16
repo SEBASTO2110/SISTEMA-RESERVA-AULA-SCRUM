@@ -1,6 +1,5 @@
-import sqlite3
-from pathlib import Path
-
+﻿import sqlite3
+from pathlib import Path 
 DB_PATH = Path(__file__).parent.parent / "db.sqlite"
 
 class ConexionBD:
@@ -50,11 +49,12 @@ class BaseDatos:
                 pass
     
     def obtener_salas(self):
-        return self.bd.consultar("SELECT * FROM salas WHERE disponible = 1")
+        resultado = self.bd.consultar("SELECT * FROM salas WHERE disponible = 1")
+        return [dict(r) for r in resultado]
     
     def obtener_sala_por_id(self, sala_id):
         resultado = self.bd.consultar("SELECT * FROM salas WHERE id = ?", (sala_id,))
-        return resultado[0] if resultado else None
+        return dict(resultado[0]) if resultado else None
     
     def insertar_sala(self, nombre, capacidad):
         return self.bd.ejecutar("INSERT INTO salas (nombre, capacidad) VALUES (?, ?)", (nombre, capacidad))
@@ -68,12 +68,13 @@ class BaseDatos:
     
     def obtener_reservas_por_fecha(self, fecha):
         sql = "SELECT r.*, s.nombre as sala_nombre FROM reservas r JOIN salas s ON r.sala_id = s.id WHERE r.fecha = ? AND r.estado = 'activa' ORDER BY r.hora_inicio"
-        return self.bd.consultar(sql, (fecha,))
+        resultado = self.bd.consultar(sql, (fecha,))
+        return [dict(r) for r in resultado]
     
     def obtener_reserva_por_id(self, reserva_id):
         sql = "SELECT r.*, s.nombre as sala_nombre FROM reservas r JOIN salas s ON r.sala_id = s.id WHERE r.id = ?"
         resultado = self.bd.consultar(sql, (reserva_id,))
-        return resultado[0] if resultado else None
+        return dict(resultado[0]) if resultado else None
     
     def validar_solapamiento(self, sala_id, fecha, hora_inicio, hora_fin, reserva_id=None):
         sql = "SELECT * FROM reservas WHERE sala_id = ? AND fecha = ? AND estado = 'activa' AND ((hora_inicio < ? AND hora_fin > ?) OR (hora_inicio < ? AND hora_fin > ?) OR (hora_inicio >= ? AND hora_fin <= ?))"

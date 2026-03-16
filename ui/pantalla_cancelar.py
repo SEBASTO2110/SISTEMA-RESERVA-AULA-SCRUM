@@ -57,7 +57,7 @@ class PantallaCancelar:
         entry_fecha.pack(fill="x", pady=(0, 10))
         
         tk.Button(frame, text="🔍 Buscar", bg="#3498db", fg="white", 
-                 font=("Arial", 10, "bold"), command=self.cargar_reservas).pack(pady=(0, 10))
+        font=("Arial", 10, "bold"), command=self.cargar_reservas).pack(pady=(0, 10))
         
         # Tabla de reservas
         tk.Label(frame, text="Reservas disponibles:", font=("Arial", 10, "bold"), 
