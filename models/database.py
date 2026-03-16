@@ -6,7 +6,7 @@ class ConexionBD:
         self.conn = None
 
     def conectar(self):
-        self.conn = sqlite3.connect(self.nombre_db)
+        self.conn = sqlite3.connect(self.nombre_db, timeout=10)
         return self.conn
 
     def desconectar(self):
@@ -87,7 +87,7 @@ def insertar_salas_prueba():
                 "INSERT INTO salas(nombre, capacidad) VALUES (?,?)",
                 sala
             )
-        except:
+        except:  # noqa: E722
             pass
 
 def obtener_salas():
@@ -209,17 +209,6 @@ def insertar_sala(nombre, capacidad):
 
     return db.ejecutar(sql, (nombre, capacidad))
 
-
-def insertar_sala(nombre, capacidad):
-
-    db = ConexionBD()
-
-    sql = """
-    INSERT INTO salas(nombre, capacidad)
-    VALUES (?, ?)
-    """
-
-    return db.ejecutar(sql, (nombre, capacidad))
 
 if __name__ == "__main__":
 
