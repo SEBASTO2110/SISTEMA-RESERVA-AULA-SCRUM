@@ -5,6 +5,8 @@ Menú con acceso a todas las funcionalidades
 import tkinter as tk
 from tkinter import messagebox
 from models.database import ConexionBD
+from ui.pantalla_registro import PantallaRegistro
+from ui.pantalla_consulta import PantallaConsulta
 
 class VentanaMain:
     def __init__(self, root):
@@ -152,7 +154,8 @@ class VentanaMain:
     
     def consultar_reservas(self):
         """Abre la pantalla de consulta por fecha"""
-        messagebox.showinfo("En construcción", "Pantalla de Consulta\n\nSantiago está trabajando en esto")
+        ventana = tk.Toplevel(self.root)
+        app = PantallaConsulta(ventana, self.db)
     
     def ver_detalles(self):
         """Abre la pantalla de detalles de una reserva"""
