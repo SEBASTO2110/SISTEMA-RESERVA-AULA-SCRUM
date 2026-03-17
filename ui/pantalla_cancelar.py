@@ -12,93 +12,103 @@ class PantallaCancelar:
         
         self.ventana = tk.Toplevel(parent)
         self.ventana.title("Cancelar Reserva")
-        self.ventana.geometry("600x500")
+        self.ventana.geometry("650x650")  # ✅ AUMENTADO
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f4f8")
         self.ventana.grab_set()
         
         # Centrar ventana
         self.ventana.update_idletasks()
+        x = (self.ventana.winfo_screenwidth() // 2) - 325
+        y = (self.ventana.winfo_screenheight() // 2) - 325
+        self.ventana.geometry(f"650x650+{x}+{y}")  # ✅ MISMO TAMAÑO
+        
+        self.crear_interfaz()
+        self.cargar_reservas()
+            
+            # Centrar ventana
+        self.ventana.update_idletasks()
         x = (self.ventana.winfo_screenwidth() // 2) - 300
         y = (self.ventana.winfo_screenheight() // 2) - 250
         self.ventana.geometry(f"600x500+{x}+{y}")
-        
         self.crear_interfaz()
         self.cargar_reservas()
     
     def crear_interfaz(self):
+
         # Título
         tk.Label(
-            self.ventana,
-            text="❌ Cancelar Reserva",
-            font=("Arial", 18, "bold"),
-            bg="#f0f4f8",
-            fg="#1a237e"
+        self.ventana,
+        text="❌ Cancelar Reserva",
+        font=("Arial", 18, "bold"),
+        bg="#f0f4f8",
+        fg="#1a237e"
         ).pack(pady=(15, 5))
-        
+    
         tk.Label(
-            self.ventana,
-            text="Selecciona una reserva para cancelarla",
-            font=("Arial", 10),
-            bg="#f0f4f8",
-            fg="#666"
+        self.ventana,
+        text="Selecciona una reserva para cancelarla",
+        font=("Arial", 10),
+        bg="#f0f4f8",
+        fg="#666"
         ).pack(pady=(0, 10))
-        
+    
         # Frame principal
         frame = tk.Frame(self.ventana, bg="#ffffff", bd=1, relief="solid", padx=15, pady=15)
         frame.pack(fill="both", expand=True, padx=20, pady=5)
-        
+    
         # Campo: Buscar por fecha
         tk.Label(frame, text="Buscar reservas por fecha (YYYY-MM-DD):", 
-                font=("Arial", 10, "bold"), bg="#ffffff", anchor="w").pack(fill="x", pady=(0, 5))
-        
+            font=("Arial", 10, "bold"), bg="#ffffff", anchor="w").pack(fill="x", pady=(0, 5))
+    
         self.var_fecha_busqueda = tk.StringVar()
         entry_fecha = tk.Entry(frame, textvariable=self.var_fecha_busqueda, width=40, font=("Arial", 10))
         entry_fecha.pack(fill="x", pady=(0, 10))
-        
+    
         tk.Button(frame, text="🔍 Buscar", bg="#3498db", fg="white", 
         font=("Arial", 10, "bold"), command=self.cargar_reservas).pack(pady=(0, 10))
-        
+    
         # Tabla de reservas
         tk.Label(frame, text="Reservas disponibles:", font=("Arial", 10, "bold"), 
-                bg="#ffffff", anchor="w").pack(fill="x", pady=(10, 5))
-        
+            bg="#ffffff", anchor="w").pack(fill="x", pady=(10, 5))
+    
         # Scrollbar
         scrollbar = tk.Scrollbar(frame)
         scrollbar.pack(side="right", fill="y")
-        
-        self.listbox = tk.Listbox(frame, font=("Arial", 9), height=12, yscrollcommand=scrollbar.set)
+    
+        # ✅ CAMBIO: Reducir height de 12 a 8
+        self.listbox = tk.Listbox(frame, font=("Arial", 9), height=8, yscrollcommand=scrollbar.set)
         self.listbox.pack(fill="both", expand=True, pady=(0, 10))
         scrollbar.config(command=self.listbox.yview)
-        
+    
         # Botones
         frame_botones = tk.Frame(self.ventana, bg="#f0f4f8")
         frame_botones.pack(pady=15)
-        
-        tk.Button(
-            frame_botones,
-            text="🗑️  Cancelar Seleccionada",
-            bg="#e74c3c",
-            fg="white",
-            font=("Arial", 11, "bold"),
-            width=20,
-            cursor="hand2",
-            relief="flat",
-            command=self.cancelar_reserva
-        ).pack(side="left", padx=10)
-        
-        tk.Button(
-            frame_botones,
-            text="✖  Cerrar",
-            bg="#95a5a6",
-            fg="white",
-            font=("Arial", 11, "bold"),
-            width=12,
-            cursor="hand2",
-            relief="flat",
-            command=self.ventana.destroy
-        ).pack(side="left", padx=10)
     
+        tk.Button(
+        frame_botones,
+        text="🗑️  Cancelar Seleccionada",
+        bg="#e74c3c",
+        fg="white",
+        font=("Arial", 11, "bold"),
+        width=20,
+        cursor="hand2",
+        relief="flat",
+        command=self.cancelar_reserva
+    ).pack(side="left", padx=10)
+    
+        tk.Button(
+        frame_botones,
+        text="✖  Cerrar",
+        bg="#95a5a6",
+        fg="white",
+        font=("Arial", 11, "bold"),
+        width=12,
+        cursor="hand2",
+        relief="flat",
+        command=self.ventana.destroy
+        ).pack(side="left", padx=10)
+
     def cargar_reservas(self):
         """Carga las reservas de una fecha específica"""
         self.listbox.delete(0, "end")
