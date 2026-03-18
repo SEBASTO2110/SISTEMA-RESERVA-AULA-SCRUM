@@ -3,17 +3,14 @@ Sistema de Reservas de Salas
 Punto de entrada de la aplicación
 """
 import tkinter as tk
-from ui.interfaz import VentanaMain
+from ui.interfaz import DashboardModerno
 
 def main():
     # Crear ventana principal
     root = tk.Tk()
-    root.title("Sistema de Reservas de Salas")
-    root.geometry("500x600")
-    root.resizable(False, False)
     
-    # Iniciar la interfaz
-    app = VentanaMain(root)
+    # Iniciar la aplicación con el nuevo dashboard
+    app = DashboardModerno(root)
     
     # Iniciar el loop de eventos
     root.mainloop()
