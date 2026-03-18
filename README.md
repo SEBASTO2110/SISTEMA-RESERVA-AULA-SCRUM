@@ -1,5 +1,21 @@
 # 📅 Sistema de Gestión de Reservas de Salas
 
+
+
+## Link del video
+
+https://drive.google.com/file/d/1YfWkeM1GGKc44bR3U4Vxym13l9-KzuWe/view?usp=sharing
+
+
+
+## Link de la documentación 
+
+https://docs.google.com/document/d/1fzCzoZXGqFUtH_FqZPJ7Za6zVSeDOLaA/edit?usp=sharing&ouid=117062481297950245071&rtpof=true&sd=true
+
+
+## Link de las diapositivas
+https://drive.google.com/file/d/1Hzi8XRPIRwbZlBm5w_GOIbrRnecfW0Hl/view?usp=sharing
+
 ## 📖 Descripción
 
 **Sistema de Gestión de Reservas de Salas** es una aplicación de escritorio desarrollada en Python que permite a usuarios y administradores gestionar de forma intuitiva la reserva de salas y aulas, evitando conflictos de horarios y manteniendo un control centralizado.
@@ -324,3 +340,4 @@ Descripción:
 - Documentar funciones con docstrings
 - Seguir PEP 8
 - Hacer commits atómicos y significativos
+
